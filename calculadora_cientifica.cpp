@@ -19,4 +19,3 @@ calculadora_cientifica.set_default_size(800, 400);
 //Rodando o app
 return app->run(calculadora_cientifica);
 }
-
