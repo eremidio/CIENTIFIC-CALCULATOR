@@ -5,7 +5,7 @@
 #include<array>
 #include<string>
 #include<memory>
-
+#include"calculadora_cientifica_ajuda.h"
 using namespace std;
 using namespace Glib;
 using namespace Gtk;
@@ -110,6 +110,9 @@ Frame bit_frame;
 Grid bit_grid;
 Button bin_button, oct_button, hex_button, dec_button, and_button, or_button, xor_button, not_button, shl_button, shr_button, bit_equal_button, a_button, b_button, c_button, d_button, e_button, f_button, x_button;
 
+//JANELA DE AJUDA
+HelpWindow* help_window=new HelpWindow;
+
 //MÉTODOS DA CLASSE
 //FUNÇÕES DE USO GERAL
 void clear();
@@ -205,4 +208,6 @@ void put_d();
 void put_e();
 void put_f();
 void put_x();
+// MOSTRAR AJUDA
+void help(Gtk::EntryIconPosition icon_pos, const GdkEventButton* event);
 };
