@@ -357,7 +357,7 @@ e_button.signal_clicked().connect(sigc::mem_fun(*this, &calculator::put_e));
 f_button.signal_clicked().connect(sigc::mem_fun(*this, &calculator::put_f));
 //ASSISTENTE DE AJUDA (ÍCONE NO DISPLAY DA CALCULADORA)-AINDA POR IMPLEMENTAR
 display_entry.set_icon_from_icon_name("help-about");
-
+display_entry.signal_icon_press().connect(sigc::mem_fun(*this, &calculator::help));
 //EXIBINDO OS WIDGETS DO APP
 show_all_children();
 }//FIM DO CONSTRTUTOR DA CLASSE
@@ -1400,3 +1400,10 @@ display_text.push_back(c);
 display_entry.set_text(display_text);
                         };
 
+//AJUDA
+void calculator::help(EntryIconPosition /* icon_pos */, const GdkEventButton* /* event */){
+help_window->show();
+help_window->set_default_size(600, 600);
+help_window->set_title("Calculadora científica - ajuda.");
+help_window->show_all_children();
+                       };
