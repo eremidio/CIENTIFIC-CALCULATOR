@@ -210,4 +210,5 @@ void put_f();
 void put_x();
 // MOSTRAR AJUDA
 void help(Gtk::EntryIconPosition icon_pos, const GdkEventButton* event);
+bool on_key_press_event(GdkEventKey* event) override/*SOBRESCREVENDO O MÉTODO ORIGINAL DA CLASSE Gtk::Window*/;
 };
