@@ -355,9 +355,13 @@ c_button.signal_clicked().connect(sigc::mem_fun(*this, &calculator::put_c));
 d_button.signal_clicked().connect(sigc::mem_fun(*this, &calculator::put_d));
 e_button.signal_clicked().connect(sigc::mem_fun(*this, &calculator::put_e));
 f_button.signal_clicked().connect(sigc::mem_fun(*this, &calculator::put_f));
-//ASSISTENTE DE AJUDA (ÍCONE NO DISPLAY DA CALCULADORA)-AINDA POR IMPLEMENTAR
+//ASSISTENTE DE AJUDA (ÍCONE NO DISPLAY DA CALCULADORA)
 display_entry.set_icon_from_icon_name("help-about");
 display_entry.signal_icon_press().connect(sigc::mem_fun(*this, &calculator::help));
+
+//ATIVANDO ATALHOS DE TECLADO
+add_events(Gdk::KEY_PRESS_MASK);
+
 //EXIBINDO OS WIDGETS DO APP
 show_all_children();
 }//FIM DO CONSTRTUTOR DA CLASSE
@@ -1402,8 +1406,28 @@ display_entry.set_text(display_text);
 
 //AJUDA
 void calculator::help(EntryIconPosition /* icon_pos */, const GdkEventButton* /* event */){
+help_window->set_default_size(800, 800);
 help_window->show();
-help_window->set_default_size(600, 600);
 help_window->set_title("Calculadora científica - ajuda.");
 help_window->show_all_children();
                        };
+
+
+bool calculator::on_key_press_event(GdkEventKey* key_event){
+//Exibindo o menu de ajuda
+  if((key_event->keyval == GDK_KEY_H) && (key_event->state &(GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_MOD1_MASK)) == GDK_CONTROL_MASK){
+help_window->set_default_size(800, 800);
+help_window->show();
+help_window->set_title("Calculadora científica - ajuda.");
+help_window->show_all_children();
+    return true;
+  };
+ //Encerrando o aplicativo
+if((key_event->keyval == GDK_KEY_F4) && (key_event->state & (GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_MOD1_MASK)) == GDK_MOD1_MASK){
+    hide();
+    return true;
+  };
+  
+  //Retornando o método base da classe em caso de falha
+  return Gtk::Window::on_key_press_event(key_event);
+};
