@@ -32,8 +32,15 @@ add(help_scrolledwindow);
 help_scrolledwindow.set_policy(POLICY_AUTOMATIC, POLICY_AUTOMATIC);
 help_scrolledwindow.add(help_label);
 help_label.set_justify(JUSTIFY_FILL);
+help_label.set_line_wrap();
+//AJUSTE DA FONTE A SER USADA
+Pango::FontDescription help_font;
+help_font.set_family("Times");
+help_font.set_size(10*PANGO_SCALE);
+help_font.set_weight(Pango::Weight::WEIGHT_BOLD);
+help_label.override_font(help_font);
 //TEXTO DE AJUDA A SER EXIBIDO NA JANELA SECUNDÁRIA
-help_label.set_text("CALCULADORA CIENTÍFICA - Versão 1.2\n"
+help_label.set_text("CALCULADORA CIENTÍFICA - Versão 1.4\n"
 "----------------------------------------------------------------\n\n"
 "Este aplicativo permite ao usuário realizar cálculos matemáticos básicos. Diversas funcionalidades estão presentes.\nO aplicativo permite ao usuário realizar operações aritméticas elementares, cálculos com funções trigonométricas e hiperbólicas, funções exponenciais e logarítmicas, operações com números complexos,\noperações com manipulação de bits, além operar com números inteiros em diferentes bases.\n\n"
 
