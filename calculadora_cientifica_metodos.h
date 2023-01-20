@@ -18,6 +18,7 @@ using namespace Gtk;
 
 //DESTRUIDOR DA CLASSE
 calculator::~calculator(){
+delete help_window;
 };
 
 //CONSTRUTOR DA CLASSE
@@ -607,10 +608,10 @@ result=number1/number2;
 if(mo==true){
 
 int_number2=static_cast<long long int>(number2);
-result=int_number1%int_number2;
+int_result=int_number1%int_number2;
 
 display_temp+="≡";
-display_temp+=to_string(result);
+display_temp+=to_string(int_result);
 display_temp+="(mod";
 display_temp+=to_string(int_number2);
 display_temp+=")";
