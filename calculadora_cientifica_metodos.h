@@ -357,7 +357,7 @@ d_button.signal_clicked().connect(sigc::mem_fun(*this, &calculator::put_d));
 e_button.signal_clicked().connect(sigc::mem_fun(*this, &calculator::put_e));
 f_button.signal_clicked().connect(sigc::mem_fun(*this, &calculator::put_f));
 //ASSISTENTE DE AJUDA (ÍCONE NO DISPLAY DA CALCULADORA)
-display_entry.set_icon_from_icon_name("help-about");
+display_entry.set_icon_from_icon_name("help-faq");
 display_entry.signal_icon_press().connect(sigc::mem_fun(*this, &calculator::help));
 
 //ATIVANDO ATALHOS DE TECLADO
